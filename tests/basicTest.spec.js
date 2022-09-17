@@ -2,7 +2,7 @@ const { test, expect } = require('@playwright/test');
 
 test.describe('login test', () => {
   test.beforeEach(async ({ page }) => {
-    await page.goto(process.env.LOGIN_TEST_URL);
+    await page.goto('https://rahulshettyacademy.com/loginpagePractise/');
   });
 
   test('login fails without username', async ({ page }) => {
@@ -39,7 +39,7 @@ test.describe('login test', () => {
 
 test.describe('login test', () => {
   test.beforeEach(async ({ page }) => {
-    await page.goto(process.env.LOGIN_TEST_URL);
+    await page.goto('https://rahulshettyacademy.com/loginpagePractise/');
   });
 
   test('login successfully', async ({ page }) => {
@@ -89,7 +89,7 @@ test.describe('login test', () => {
 test('child window handle', async ({ browser }) => {
   const context = await browser.newContext();
   const page = await context.newPage();
-  await page.goto(process.env.LOGIN_TEST_URL);
+  await page.goto('https://rahulshettyacademy.com/loginpagePractise/');
   const documentLink = page.locator("[href*='documents-request']");
 
   const [newPage] = await Promise.all([
