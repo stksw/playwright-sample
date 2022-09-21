@@ -43,7 +43,7 @@ const config = {
     trace: 'on',
     browserName: 'chromium',
     screenshot: 'on',
-    headless: false,
+    headless: true,
   },
 
   /* Configure projects for major browsers */

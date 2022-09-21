@@ -1,8 +1,9 @@
 const { test, expect } = require('@playwright/test');
+const { API_URL } = require('../utils/ApiUtils');
 
 test.describe('login test', () => {
   test.beforeEach(async ({ page }) => {
-    await page.goto('https://rahulshettyacademy.com/loginpagePractise/');
+    await page.goto(`${API_URL}/loginpagePractise/`);
   });
 
   test('login fails without username', async ({ page }) => {
@@ -39,7 +40,7 @@ test.describe('login test', () => {
 
 test.describe('login test', () => {
   test.beforeEach(async ({ page }) => {
-    await page.goto('https://rahulshettyacademy.com/loginpagePractise/');
+    await page.goto(`${API_URL}/loginpagePractise/`);
   });
 
   test('login successfully', async ({ page }) => {
@@ -60,13 +61,7 @@ test.describe('login test', () => {
     expect(item).toBe('Samsung Note 8');
 
     const allItems = await page.locator('.card-body a').allTextContents();
-    // console.log(allItems);
-    // ['iphone X', 'Samsung Note 8', 'Nokia Edge', 'Blackberry']
-
-    // page.on('request', (request) => console.log(request.url()));
-    // page.on('response', (response) =>
-    //   console.log(response.url(), response.status())
-    // );
+    console.log(allItems);
   });
 
   test('login successfully other code', async ({ page }) => {
@@ -89,7 +84,7 @@ test.describe('login test', () => {
 test('child window handle', async ({ browser }) => {
   const context = await browser.newContext();
   const page = await context.newPage();
-  await page.goto('https://rahulshettyacademy.com/loginpagePractise/');
+  await page.goto(`${API_URL}/loginpagePractise/`);
   const documentLink = page.locator("[href*='documents-request']");
 
   const [newPage] = await Promise.all([

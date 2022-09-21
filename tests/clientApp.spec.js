@@ -1,9 +1,10 @@
 const { test, expect } = require('@playwright/test');
+const { API_URL } = require('../utils/ApiUtils');
 
 test.describe('multi window controls', () => {
   test('e-commerce payments and confirm', async ({ page }) => {
     const email = 'rahulshetty@gmail.com';
-    await page.goto('https://rahulshettyacademy.com/client');
+    await page.goto(`${API_URL}/client`);
     await page.locator('#userEmail').fill(email);
     await page.locator('#userPassword').fill('Iamking@000');
     await page.locator("[value='Login']").click();
