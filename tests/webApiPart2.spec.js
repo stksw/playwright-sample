@@ -1,5 +1,6 @@
 const { test, request, expect } = require('@playwright/test');
 const { API_URL } = require('../utils/ApiUtils');
+const { customTest } = require('../utils/testBase');
 
 let webContext;
 
@@ -15,8 +16,8 @@ test.beforeAll(async ({ browser }) => {
   webContext = await browser.newContext({ storageState: 'state.json' });
 });
 
-test('client app login', async () => {
-  const page = await webContext.newPage();
+customTest('client app login', async ({ page, testDataForOrder }) => {
+  // const page = await webContext.newPage();
   await page.goto(`${API_URL}/client`);
   const products = page.locator('.card-body');
   const titles = await page.locator('.card-body b').allTextContents();
